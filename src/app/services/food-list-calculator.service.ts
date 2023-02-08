@@ -12,7 +12,13 @@ export class FoodListCalculatorService {
     let total = 0.0;
 
     foodList.forEach((item: FoodList) => {
-      if (item.isActive == true) {
+      let today = new Date();
+      if (
+        item.isActive == true &&
+        new Date(item.dateEaten) >
+          new Date(today.setDate(today.getDate() - 1)) &&
+        new Date(item.dateEaten) < new Date(today.setDate(today.getDate() + 1))
+      ) {
         total += item.calorie * item.quantity;
       }
     });
