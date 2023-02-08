@@ -4,10 +4,10 @@
       <div class="form-group col-8">
         <label>Please Select Meal Type</label>
         <select name="" id="" class="form-control" [(ngModel)]="foodlists.meal">
-          <option value="Breakfast">Breakast</option>
-          <option value="Lunch">Lunch</option>
-          <option value="Dinner">Dinner</option>
-          <option value="Snack">Snack</option>
+          <option value="breakfast">Breakfast</option>
+          <option value="lunch">Lunch</option>
+          <option value="dinner">Dinner</option>
+          <option value="snack">Snack</option>
         </select>
       </div>
 
@@ -20,8 +20,11 @@
             <label>Date</label>
             <input
               type="date"
+              data-date-format="yyyy-MM-dd"
               class="form-control mb-4"
               [(ngModel)]="foodlists.dateEaten"
+              [(ngModel)]="foodlists.createdOn"
+              [(ngModel)]="foodlists.lastUpdatedOn"
             />
           </div>
         </div>
@@ -68,12 +71,12 @@
               [(ngModel)]="foodlists.measure"
             >
               <option selected disabled></option>
-              <option value="slice/s">slice/s</option>
-              <option value="piece/s">piece/s</option>
-              <option value="gram/s">gram/s</option>
-              <option value="liter/s">liter/s</option>
-              <option value="cup/s">cup/s</option>
-              <option value="glass/es">glass/es</option>
+              <option value="slice">slice</option>
+              <option value="piece">piece</option>
+              <option value="gram">gram</option>
+              <option value="liter">liter</option>
+              <option value="cup">cup</option>
+              <option value="glass">glass</option>
               <option value="tbsp">tbsp</option>
               <option value="small">small</option>
               <option value="medium">medium</option>

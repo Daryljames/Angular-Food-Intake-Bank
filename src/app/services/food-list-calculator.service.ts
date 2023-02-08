@@ -12,7 +12,9 @@ export class FoodListCalculatorService {
     let total = 0.0;
 
     foodList.forEach((item: FoodList) => {
-      total += item.calorie * item.quantity;
+      if (item.isActive == true) {
+        total += item.calorie * item.quantity;
+      }
     });
 
     return total;

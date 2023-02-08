@@ -11,4 +11,6 @@ export interface FoodList {
   lastUpdatedOn: Date;
   lastUpdatedBy: string;
   isActive: boolean;
+  isNotEditable: boolean;
+  user: number;
 }

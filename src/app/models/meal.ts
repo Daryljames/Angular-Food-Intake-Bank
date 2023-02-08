@@ -1,4 +1,4 @@
 export interface Meal {
-  meal: string;
+  name: string;
   isActive: boolean;
 }

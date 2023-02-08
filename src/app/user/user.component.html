@@ -44,19 +44,21 @@
             <p>GOAL</p>
           </div>
           <div class="col-1 mt-3">
-            <!-- <strong class="fs-2 remainingCal">{{ user.calorieGoal }}</strong> -->
             <h4>-</h4>
           </div>
           <div class="col">
-            <strong class="fs-2 remainingCal">{{ totalFoodCalories }}</strong>
+            <strong class="fs-2 remainingCal">{{
+              totalFoodCalories | number : "1.2-2"
+            }}</strong>
             <p>FOOD</p>
           </div>
           <div class="col-1 mt-3">
-            <!-- <strong class="fs-2 remainingCal">{{ user.calorieGoal }}</strong> -->
             <h4>=</h4>
           </div>
           <div class="col-5">
-            <strong class="fs-2 remainingCal">{{ remainingCalories }}</strong>
+            <strong class="fs-2 remainingCal">{{
+              remainingCalories | number : "1.2-2"
+            }}</strong>
             <p>NET</p>
           </div>
         </div>

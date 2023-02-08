@@ -1,10 +1,19 @@
-<div class="container">
-  <h4>Your Food Bank for Today</h4>
+<div class="container mt-3">
+  <h4>
+    Your Food Bank for
+    <button class="button btn-primary btn-sm" (click)="goBackOneDate(date)">
+      &#60;
+    </button>
+    <span class="text-light bg-primary"> {{ date | date : "MM/dd/yyyy" }} </span
+    ><button class="button btn-primary btn-sm" (click)="goForwardOneDate(date)">
+      &#62;
+    </button>
+  </h4>
 </div>
 <div class="container" *ngFor="let meal of meals">
   <div class="card mb-4">
     <div class="card-header">
-      <h5>{{ meal.meal | titlecase }}</h5>
+      <h5>{{ meal.name | titlecase }}</h5>
     </div>
     <div class="row text-center">
       <div class="col"></div>
@@ -16,28 +25,98 @@
       <div class="col"><strong>Remove</strong></div>
     </div>
     <ng-container class="card-body" *ngFor="let food of FoodList">
-      <ng-container *ngIf="meal.meal == food.meal">
-        <div class="row text-center">
-          <div class="col">
-            <button class="btn btn-warning btn-sm">Edit</button>
+      <ng-container
+        *ngIf="
+          meal.name == food.meal &&
+          food.isActive == true &&
+          (date | date : 'MM/dd/yyyy') == (food.dateEaten | date : 'MM/dd/yyyy')
+        "
+      >
+        <div *ngIf="food.isNotEditable == true">
+          <div class="row text-center">
+            <div class="col">
+              <button
+                class="btn btn-warning btn-sm"
+                (click)="editFoodItem(food)"
+              >
+                Edit
+              </button>
+            </div>
+            <div class="col">
+              <p class="fs-5">{{ food.name }}</p>
+            </div>
+            <div class="col">
+              <p class="fs-5">{{ food.calorie }}</p>
+            </div>
+            <div class="col">
+              <p class="fs-5">{{ food.quantity }}</p>
+            </div>
+            <div class="col">
+              <p class="fs-5">{{ food.measure }}</p>
+            </div>
+            <div class="col">
+              <p class="fs-5">{{ food.dateEaten }}</p>
+            </div>
+            <div class="col">
+              <button
+                class="btn btn-danger btn-sm"
+                (click)="deleteFoodItem(food)"
+              >
+                x
+              </button>
+            </div>
           </div>
-          <div class="col">
-            <p class="fs-5">{{ food.name }}</p>
-          </div>
-          <div class="col">
-            <p class="fs-5">{{ food.calorie }}</p>
-          </div>
-          <div class="col">
-            <p class="fs-5">{{ food.quantity }}</p>
-          </div>
-          <div class="col">
-            <p class="fs-5">{{ food.measure }}</p>
-          </div>
-          <div class="col">
-            <p class="fs-5">{{ food.dateEaten }}</p>
-          </div>
-          <div class="col">
-            <button class="btn btn-danger btn-sm">x</button>
+        </div>
+
+        <div *ngIf="food.isNotEditable == false">
+          <div class="row text-center">
+            <div class="col">
+              <button
+                class="btn btn-warning btn-sm"
+                (click)="saveFoodItem(food)"
+              >
+                Save
+              </button>
+            </div>
+            <div class="col form-group">
+              <input type="text" class="form-control" [(ngModel)]="food.name" />
+            </div>
+            <div class="col form-group">
+              <input
+                type="number"
+                class="form-control"
+                [(ngModel)]="food.calorie"
+              />
+            </div>
+            <div class="col form-group">
+              <input
+                type="number"
+                class="form-control"
+                [(ngModel)]="food.quantity"
+              />
+            </div>
+            <div class="col form-group">
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="food.measure"
+              />
+            </div>
+            <div class="col form-group">
+              <input
+                type="date"
+                class="form-control"
+                [(ngModel)]="food.dateEaten"
+              />
+            </div>
+            <div class="col form-group">
+              <button
+                class="btn btn-danger btn-sm"
+                (click)="deleteFoodItem(food)"
+              >
+                x
+              </button>
+            </div>
           </div>
         </div>
       </ng-container>

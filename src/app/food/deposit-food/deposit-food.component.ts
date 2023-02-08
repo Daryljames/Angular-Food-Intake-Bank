@@ -22,6 +22,8 @@ export class DepositFoodComponent {
     lastUpdatedOn: new Date(),
     lastUpdatedBy: '',
     isActive: true,
+    isNotEditable: true,
+    user: 1,
   };
 
   @Output() formEvent: EventEmitter<FoodList> = new EventEmitter<FoodList>();
@@ -40,11 +42,12 @@ export class DepositFoodComponent {
       (this.foodlists.calorie = 0.0),
       (this.foodlists.quantity = 0.0),
       (this.foodlists.measure = ''),
-      (this.foodlists.dateEaten = new Date('yyyy-MM-dd')),
+      (this.foodlists.dateEaten = new Date()),
       (this.foodlists.createdOn = new Date()),
       (this.foodlists.createdBy = ''),
       (this.foodlists.lastUpdatedOn = new Date()),
       (this.foodlists.lastUpdatedBy = ''),
       (this.foodlists.isActive = true);
+    this.foodlists.isNotEditable = false;
   };
 }

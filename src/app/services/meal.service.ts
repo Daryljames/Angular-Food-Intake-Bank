@@ -13,7 +13,7 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class MealService {
-  baseUrl: string = 'http://localhost:5000';
+  baseUrl: string = 'http://localhost:5128';
   constructor(private http: HttpClient) {}
 
   getAll = (): Observable<Meal[]> => {
