@@ -1,0 +1,46 @@
+<div class="container">
+  <h4>Your Food Bank for Today</h4>
+</div>
+<div class="container" *ngFor="let meal of meals">
+  <div class="card mb-4">
+    <div class="card-header">
+      <h5>{{ meal.meal | titlecase }}</h5>
+    </div>
+    <div class="row text-center">
+      <div class="col"></div>
+      <div class="col"><strong>Food</strong></div>
+      <div class="col"><strong>Calories</strong></div>
+      <div class="col"><strong>Quantity</strong></div>
+      <div class="col"><strong>Measure</strong></div>
+      <div class="col"><strong>Added On</strong></div>
+      <div class="col"><strong>Remove</strong></div>
+    </div>
+    <ng-container class="card-body" *ngFor="let food of FoodList">
+      <ng-container *ngIf="meal.meal == food.meal">
+        <div class="row text-center">
+          <div class="col">
+            <button class="btn btn-warning btn-sm">Edit</button>
+          </div>
+          <div class="col">
+            <p class="fs-5">{{ food.name }}</p>
+          </div>
+          <div class="col">
+            <p class="fs-5">{{ food.calorie }}</p>
+          </div>
+          <div class="col">
+            <p class="fs-5">{{ food.quantity }}</p>
+          </div>
+          <div class="col">
+            <p class="fs-5">{{ food.measure }}</p>
+          </div>
+          <div class="col">
+            <p class="fs-5">{{ food.dateEaten }}</p>
+          </div>
+          <div class="col">
+            <button class="btn btn-danger btn-sm">x</button>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>

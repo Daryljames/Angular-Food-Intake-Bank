@@ -1,0 +1,113 @@
+<div class="container">
+  <h3 class="mt-3 mb-3">Hello {{ user.firstName }}!</h3>
+
+  <div>
+    <div class="row">
+      <div class="col-md-6 header p-1">Your Daily Summary</div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 summaryWrapper">
+        <div class="row">
+          <div class="col-6">
+            <p class="mb-0 pt-2">Calories Remaining</p>
+            <strong class="fs-2 remainingCal">{{ user.calorieGoal }}</strong>
+          </div>
+          <div class="col">
+            <p class="mb-0 pt-4"></p>
+            <button
+              routerLink="/foodBank"
+              type="button"
+              class="btn btn-primary"
+            >
+              Food Bank
+            </button>
+          </div>
+          <div class="col">
+            <p class="mb-0 pt-4"></p>
+            <button
+              type="button"
+              class="btn btn-primary"
+              routerLink="/depositFood"
+            >
+              Add Food
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 summaryWrapper">
+        <div class="row">
+          <hr />
+          <div class="col-2">
+            <strong class="fs-2 remainingCal">{{ user.calorieGoal }}</strong>
+            <p>GOAL</p>
+          </div>
+          <div class="col-1 mt-3">
+            <!-- <strong class="fs-2 remainingCal">{{ user.calorieGoal }}</strong> -->
+            <h4>-</h4>
+          </div>
+          <div class="col">
+            <strong class="fs-2 remainingCal">{{ totalFoodCalories }}</strong>
+            <p>FOOD</p>
+          </div>
+          <div class="col-1 mt-3">
+            <!-- <strong class="fs-2 remainingCal">{{ user.calorieGoal }}</strong> -->
+            <h4>=</h4>
+          </div>
+          <div class="col-5">
+            <strong class="fs-2 remainingCal">{{ remainingCalories }}</strong>
+            <p>NET</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="card">
+    <div class="card-body">
+      <div>
+        <h5>Goals and Information</h5>
+        <p class="mb-0">Calories Remaining:</p>
+        <p class="fs-2 text-success">
+          <strong>{{ remainingCalories }}</strong>
+        </p>
+        <hr />
+        <div class="row">
+          <div class="col">
+            <p class="fs-4 mb-0">{{ user.calorieGoal }}</p>
+            <p class="fs-6">GOAL</p>
+          </div>
+          <div class="col">
+            <p class="mt-3">-</p>
+          </div>
+          <div class="col">
+            <p class="fs-4 mb-0">{{ totalFoodCalories }}</p>
+            <p class="fs-6">FOOD</p>
+          </div>
+          <div class="col">
+            <p class="mt-3">=</p>
+          </div>
+          <div class="col">
+            <p class="fs-4 mb-0">{{ remainingCalories }}</p>
+            <p class="fs-6">NET</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-3"></div>
+
+      <div>
+        <p>Current Weight and Height</p>
+        <div class="row">
+          <div class="col">
+            <p>{{ user.weight }} {{ user.weightType }}</p>
+          </div>
+          <div class="col">
+            <p>{{ user.height }} {{ user.heightType }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+</div>

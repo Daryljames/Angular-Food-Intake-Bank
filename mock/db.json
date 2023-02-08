@@ -1,0 +1,109 @@
+{
+  "foodList": [
+    {
+      "id": 1,
+      "meal": "Breakfast",
+      "name": "egg",
+      "calorie": 120.5,
+      "quantity": 1,
+      "measure": "small",
+      "dateEaten": "2023-02-03",
+      "createdOn": "2023-02-03 00:00:00",
+      "createdBy": "user1",
+      "lastUpdatedOn": "2023-02-03 00:00:00",
+      "lastUpdatedBy": "user1",
+      "isActive": true
+    },
+    {
+      "id": 2,
+      "meal": "Breakfast",
+      "name": "rice",
+      "calorie": 120.1,
+      "quantity": 1,
+      "measure": "small",
+      "dateEaten": "2023-02-03",
+      "createdOn": "2023-02-03 00:00:00",
+      "createdBy": "user1",
+      "lastUpdatedOn": "2023-02-03 00:00:00",
+      "lastUpdatedBy": "user1",
+      "isActive": true
+    },
+    {
+      "id": 3,
+      "meal": "Breakfast",
+      "name": "bacon",
+      "calorie": 120.15,
+      "quantity": 1,
+      "measure": "small",
+      "dateEaten": "2023-02-03",
+      "createdOn": "2023-02-03 00:00:00",
+      "createdBy": "user1",
+      "lastUpdatedOn": "2023-02-03 00:00:00",
+      "lastUpdatedBy": "user1",
+      "isActive": true
+    },
+    {
+      "meal": "Breakfast",
+      "name": "Baboy",
+      "calorie": 100,
+      "quantity": 1,
+      "measure": "piece/s",
+      "dateEaten": "2023-02-05",
+      "createdOn": "2023-02-05T14:03:30.542Z",
+      "createdBy": "",
+      "lastUpdatedOn": "2023-02-05T14:03:30.542Z",
+      "lastUpdatedBy": "",
+      "isActive": true,
+      "id": 4
+    },
+    {
+      "meal": "Lunch",
+      "name": "Adobong Manok",
+      "calorie": 125,
+      "quantity": 1,
+      "measure": "cup/s",
+      "dateEaten": "2023-02-05",
+      "createdOn": "2023-02-05T14:09:08.667Z",
+      "createdBy": "",
+      "lastUpdatedOn": "2023-02-05T14:09:08.667Z",
+      "lastUpdatedBy": "",
+      "isActive": true,
+      "id": 5
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "firstName": "John",
+      "middleName": "Powers",
+      "lastName": "Smith",
+      "age": 20,
+      "weight": 80,
+      "weightType": "kilogram",
+      "height": 5.4,
+      "heightType": "inch",
+      "userType": "user",
+      "calorieGoal": 2000,
+      "email": "test@email.com",
+      "password": "123test"
+    }
+  ],
+  "meals": [
+    {
+      "meal": "breakfast",
+      "isActive": true
+    },
+    {
+      "meal": "Lunch",
+      "isActive": true
+    },
+    {
+      "meal": "Dinner",
+      "isActive": true
+    },
+    {
+      "meal": "Snack",
+      "isActive": true
+    }
+  ]
+}

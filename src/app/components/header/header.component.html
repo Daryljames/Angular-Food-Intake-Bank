@@ -1,0 +1,16 @@
+<div>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="/">{{ appName }}</a>
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" routerLink="/user"
+          >My Balance</a
+        >
+        <a class="nav-link" routerLink="/depositFood">Deposit Food</a>
+        <a class="nav-link" routerLink="/foodBank">Food Bank</a>
+        <a class="nav-link" routerLink="/">Sign Out</a>
+      </div>
+    </div>
+  </nav>
+  <router-outlet></router-outlet>
+</div>
