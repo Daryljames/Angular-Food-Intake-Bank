@@ -23,7 +23,7 @@ export class DepositFoodComponent {
     lastUpdatedBy: '',
     isActive: true,
     isNotEditable: true,
-    user: 1,
+    userId: 1,
   };
 
   @Output() formEvent: EventEmitter<FoodList> = new EventEmitter<FoodList>();
