@@ -5,6 +5,8 @@ import { FoodList } from 'src/app/models/foodList';
 import { FoodListServiceTsService } from 'src/app/services/food-list.service.ts.service';
 import { FilterService } from 'src/app/services/filter.service';
 import { DatePipe } from '@angular/common';
+import { User } from 'src/app/models/user';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-food-bank',
@@ -16,11 +18,13 @@ export class FoodBankComponent {
   FoodList: FoodList[] = [];
   date: Date = new Date();
   formatttedDateEaten: String = '';
+  user: User;
 
   constructor(
     private mealService: MealService,
     private foodListService: FoodListServiceTsService,
-    private filterService: FilterService
+    private filterService: FilterService,
+    private userService: UserService
   ) {}
 
   @Output() formEvent: EventEmitter<FoodList> = new EventEmitter<FoodList>();
@@ -35,6 +39,9 @@ export class FoodBankComponent {
       console.log(food);
       this.FoodList = food;
     });
+    this.userService.getById().subscribe((user) => {
+      this.user = user;
+    });
   }
 
   editFoodItem = (food: FoodList) => {
@@ -45,6 +52,10 @@ export class FoodBankComponent {
   saveFoodItem = (food: FoodList) => {
     console.log('Button was clicked');
     let o = { ...food };
+    console.log(o);
+    o.isNotEditable = true;
+    o.lastUpdatedOn = new Date();
+    o.lastUpdatedBy = this.user.firstName + ' ' + this.user.lastName;
     console.log(o);
 
     this.foodListService.save(o).subscribe((savedFoodItem) => {
@@ -59,6 +70,9 @@ export class FoodBankComponent {
     let o = { ...food };
 
     o.isActive = false;
+    console.log(o);
+    o.lastUpdatedOn = new Date();
+    o.lastUpdatedBy = this.user.firstName + ' ' + this.user.lastName;
     console.log(o);
     this.foodListService.delete(o).subscribe((savedFoodItem) => {
       this.formEvent.emit(savedFoodItem);

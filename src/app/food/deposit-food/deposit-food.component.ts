@@ -1,6 +1,8 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FoodList } from 'src/app/models/foodList';
+import { User } from 'src/app/models/user';
 import { FoodListServiceTsService } from 'src/app/services/food-list.service.ts.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-deposit-food',
@@ -8,7 +10,12 @@ import { FoodListServiceTsService } from 'src/app/services/food-list.service.ts.
   styleUrls: ['./deposit-food.component.scss'],
 })
 export class DepositFoodComponent {
-  constructor(private foodListService: FoodListServiceTsService) {}
+  constructor(
+    private foodListService: FoodListServiceTsService,
+    private userService: UserService
+  ) {}
+
+  user: User;
 
   foodlists: FoodList = {
     meal: '',
@@ -23,14 +30,26 @@ export class DepositFoodComponent {
     lastUpdatedBy: '',
     isActive: true,
     isNotEditable: true,
-    userId: 1,
+    userId: 0,
   };
+
+  ngOnInit(): void {
+    this.userService.getById().subscribe((user) => {
+      this.user = user;
+    });
+  }
 
   @Output() formEvent: EventEmitter<FoodList> = new EventEmitter<FoodList>();
 
   btnClicked = () => {
     console.log('Button was clicked');
     let o = { ...this.foodlists };
+
+    o.userId = this.user.id;
+    o.createdOn = new Date();
+    o.lastUpdatedOn = new Date();
+    o.createdBy = this.user.firstName + ' ' + this.user.lastName;
+    o.lastUpdatedBy = this.user.firstName + ' ' + this.user.lastName;
     console.log(o);
 
     this.foodListService.save(o).subscribe((savedFoodItem) => {
