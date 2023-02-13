@@ -2,6 +2,11 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.2.
 
+## Developer's Comments/Insights
+
+This project was inspired to help people track their calorie intake, and to make it more intuitive and aims to resemble a moblie bank that is or should be familiar to users.
+This project as of this moment, only has three tables that have relationships with each other. User table, Meal table and FoodList table.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
