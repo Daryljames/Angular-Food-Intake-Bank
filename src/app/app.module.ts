@@ -12,6 +12,7 @@ import { DepositFoodComponent } from './food/deposit-food/deposit-food.component
 import { FoodBankComponent } from './food/food-bank/food-bank.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 const appRoutes: Routes = [
   { path: '', component: IndexComponent },
@@ -36,6 +37,11 @@ const appRoutes: Routes = [
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
+    SweetAlert2Module.forRoot(),
+    SweetAlert2Module,
+    SweetAlert2Module.forChild({
+      /* options */
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

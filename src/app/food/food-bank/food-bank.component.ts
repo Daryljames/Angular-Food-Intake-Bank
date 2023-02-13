@@ -7,6 +7,7 @@ import { FilterService } from 'src/app/services/filter.service';
 import { DatePipe } from '@angular/common';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-food-bank',
@@ -60,6 +61,7 @@ export class FoodBankComponent {
 
     this.foodListService.save(o).subscribe((savedFoodItem) => {
       this.formEvent.emit(savedFoodItem);
+      Swal.fire({ icon: 'success', text: 'Food Item Edited' });
     });
 
     let index = this.FoodList.findIndex((el) => el == food);
@@ -76,6 +78,7 @@ export class FoodBankComponent {
     console.log(o);
     this.foodListService.delete(o).subscribe((savedFoodItem) => {
       this.formEvent.emit(savedFoodItem);
+      Swal.fire({ icon: 'success', text: 'Food Item Deleted' });
       this.ngOnInit();
     });
   };

@@ -3,6 +3,7 @@ import { FoodList } from 'src/app/models/foodList';
 import { User } from 'src/app/models/user';
 import { FoodListServiceTsService } from 'src/app/services/food-list.service.ts.service';
 import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-deposit-food',
@@ -32,11 +33,23 @@ export class DepositFoodComponent {
     isNotEditable: true,
     userId: 0,
   };
+  nameError = '';
+  mealError = '';
+  calorieError = '';
+  quantityError = '';
+  measureError = '';
+  dateEatenError = '';
 
   ngOnInit(): void {
     this.userService.getById().subscribe((user) => {
       this.user = user;
     });
+    this.nameError = '';
+    this.mealError = '';
+    this.calorieError = '';
+    this.quantityError = '';
+    this.measureError = '';
+    this.dateEatenError = '';
   }
 
   @Output() formEvent: EventEmitter<FoodList> = new EventEmitter<FoodList>();
@@ -51,9 +64,54 @@ export class DepositFoodComponent {
     o.createdBy = this.user.firstName + ' ' + this.user.lastName;
     o.lastUpdatedBy = this.user.firstName + ' ' + this.user.lastName;
     console.log(o);
+    // console.log(new Date(o.dateEaten.getTime()));
 
-    this.foodListService.save(o).subscribe((savedFoodItem) => {
-      this.formEvent.emit(savedFoodItem);
+    // this.foodListService.save(o).subscribe((savedFoodItem) => {
+    //   this.formEvent.emit(savedFoodItem);
+    // });
+    this.foodListService.save(o).subscribe({
+      next: (savedFoodItem) => {
+        this.formEvent.emit(savedFoodItem);
+        Swal.fire({ icon: 'success', text: 'Food Item Added' });
+      },
+      // error: (e) => {
+      //   console.log(o.dateEaten);
+      //   console.log(e);
+      // },
+      error: (e) => {
+        console.log(e);
+        e.error.calorie.forEach((c: any) => {
+          this.calorieError = c;
+          // Swal.fire({ icon: 'error', text: c });
+        });
+        e.error.meal.forEach((meal: any) => {
+          this.mealError = meal;
+        });
+        e.error.name.forEach((name: any) => {
+          this.nameError = name;
+          // Swal.fire({ icon: 'error', text: c });
+        });
+        e.error.quantity.forEach((q: any) => {
+          this.quantityError = q;
+        });
+        e.error.measure.forEach((measure: any) => {
+          this.measureError = measure;
+        });
+        e.error.dateEaten.forEach((dateEaten: any) => {
+          this.dateEatenError = dateEaten;
+        });
+        Swal.fire({
+          icon: 'error',
+          text: `${this.nameError} |
+              ${this.mealError} |
+              ${this.calorieError} |
+              ${this.quantityError} |
+              ${this.measureError} |
+              ${this.dateEatenError}
+              `,
+        });
+        this.ngOnInit();
+      },
     });
 
     (this.foodlists.meal = ''),
