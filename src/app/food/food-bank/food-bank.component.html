@@ -55,7 +55,7 @@
               <p class="fs-5">{{ food.measure }}</p>
             </div>
             <div class="col">
-              <p class="fs-5">{{ food.dateEaten }}</p>
+              <p class="fs-5">{{ food.dateEaten | date : "MM/dd/yyyy" }}</p>
             </div>
             <div class="col">
               <button
